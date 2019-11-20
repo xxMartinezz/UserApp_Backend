@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import org.hibernate.validator.constraints.pl.PESEL;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -26,8 +27,19 @@ public class User
     private String surname;
 
     @PESEL
+    @NotNull
     @Column(name = "pesel")
     private String pesel;
+
+    //constructors
+    public User(String name, String surname, String pesel)
+    {
+        this.name = name;
+        this.surname = surname;
+        this.pesel = pesel;
+    };
+
+    public User() { };
 
     //toString
     @Override
