@@ -1,10 +1,12 @@
 package com.example.exence.user;
 
+import com.example.exence.birthDate.BirthDate;
 import com.sun.istack.NotNull;
 import org.hibernate.validator.constraints.pl.PESEL;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "USER")
@@ -30,13 +32,8 @@ public class User
     @Column(name = "pesel")
     private String pesel;
 
-    //constructors
-    public User(String name, String surname, String pesel)
-    {
-        this.name = name;
-        this.surname = surname;
-        this.pesel = pesel;
-    };
+    @Column(name = "date")
+    private String date;
 
     public User() { };
 
@@ -53,10 +50,6 @@ public class User
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -81,5 +74,13 @@ public class User
 
     public void setPesel(String pesel) {
         this.pesel = pesel;
+    }
+
+    public String getDate() {
+        return BirthDate.getDay(getPesel()).toString() + "." + BirthDate.getMonth(getPesel()).toString() + "." + BirthDate.getYear(getPesel()).toString();
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

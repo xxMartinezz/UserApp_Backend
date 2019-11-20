@@ -8,8 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @RestController
 @RequestMapping("/users")
 public class UserController
@@ -28,8 +26,8 @@ public class UserController
         else return userRepository.findAll(pageable);
     }
 
-    @PostMapping("")
-    public User create(@RequestBody @Valid User user)
+    @PostMapping("/new")
+    public User create(@RequestBody User user)
     {
         if(user.getName().length() < 2)
         {
@@ -43,6 +41,18 @@ public class UserController
         {
             throw new PeselNotCorrectException("Pesel posiada nieodpowiednią liczbę znaków. Wymagana liczba znaków: 11");
         }
-        else return userRepository.save(user);
+        else
+        {
+            long x = 0;
+            try
+            {
+                x = Long.parseLong(user.getPesel());
+                return userRepository.save(user);
+            }
+            catch (Exception e)
+            {
+                throw new PeselNotCorrectException("Pesel posiada znaki niedozwolone");
+            }
+        }
     }
 }
