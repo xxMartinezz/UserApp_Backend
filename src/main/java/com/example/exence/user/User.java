@@ -4,7 +4,6 @@ import com.sun.istack.NotNull;
 import org.hibernate.validator.constraints.pl.PESEL;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 @Entity
