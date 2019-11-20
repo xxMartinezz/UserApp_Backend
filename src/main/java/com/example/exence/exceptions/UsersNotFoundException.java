@@ -1,6 +1,6 @@
 package com.example.exence.exceptions;
 
-public class UsersNotFoundException extends Exception
+public class UsersNotFoundException extends RuntimeException
 {
     public UsersNotFoundException() { }
 
