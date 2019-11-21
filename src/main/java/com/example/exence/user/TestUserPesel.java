@@ -8,7 +8,7 @@ public class TestUserPesel extends TestCase
     public void testUserPesel()
     {
         PESELValidator validator = new PESELValidator();
-        validator.initialize(null); //required initialization
+        validator.initialize(null); //wymagana inicajalizacja
 
         String validPesel = "88051848299";
         assertTrue(validator.isValid(validPesel, null));

@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Table(name = "USER")
 public class User
 {
-    //columns
+    //kolumny
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,8 +32,8 @@ public class User
     @Column(name = "pesel")
     private String pesel;
 
-    @Column(name = "date")
-    private String date;
+    @Column(name = "dateOfBirth")
+    private String dateOfBirth;
 
     public User() { };
 
@@ -48,6 +48,7 @@ public class User
                 '}';
     }
 
+    //gettery i settery
     public Long getId() {
         return id;
     }
@@ -76,11 +77,11 @@ public class User
         this.pesel = pesel;
     }
 
-    public String getDate() {
-        return BirthDate.getDay(getPesel()).toString() + "." + BirthDate.getMonth(getPesel()).toString() + "." + BirthDate.getYear(getPesel()).toString();
+    public String getDateOfBirth() {
+        return BirthDate.getDay(getPesel()).toString() + "-" + BirthDate.getMonth(getPesel()).toString() + "-" + BirthDate.getYear(getPesel()).toString();
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.dateOfBirth = date;
     }
 }

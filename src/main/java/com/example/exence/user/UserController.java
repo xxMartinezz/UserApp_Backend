@@ -15,6 +15,7 @@ public class UserController
     @Autowired
     private UserRepository userRepository;
 
+    //zwracanie listy użytkowników
     @GetMapping("")
     public Page<User> findAll(Pageable pageable)
     {
@@ -26,6 +27,7 @@ public class UserController
         else return userRepository.findAll(pageable);
     }
 
+    //tworzenie noweog użytkownika
     @PostMapping("/new")
     public User create(@RequestBody User user)
     {
